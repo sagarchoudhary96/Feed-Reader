@@ -24,18 +24,18 @@ $(function() {
 
         //check all feeds have url and ins't null
         it('Has url defined and not null', function() {
-            for(var feed in allFeeds){
-              expect(allFeeds[feed].url).toBeDefined();
-              expect(allFeeds[feed].url.length > 0).toBe(true);
+            for(var i=0; i < allFeeds.length; i++){
+              expect(allFeeds[i].url).toBeDefined();
+              expect(allFeeds[i].url.length > 0).toBe(true);
             }
         });
 
 
         // checks all feed have name and isn't null
         it("Has name and isn't null", function() {
-          for(feed in allFeeds){
-            expect(allFeeds[feed].name).toBeDefined();
-            expect(allFeeds[feed].name.length > 0).toBe(true);
+          for(var i = 0; i < allFeeds.length; i++){
+            expect(allFeeds[i].name).toBeDefined();
+            expect(allFeeds[i].name.length > 0).toBe(true);
           }
         });
     });
@@ -88,13 +88,15 @@ $(function() {
           // load feed before testing the spec
           loadFeed(0, function() {
             feed = $('.header-title').html();
+            loadFeed(1, function(){ //nested load2 to meet async function demands
+                 $newfeed = $('.header-title').html();
+                 done();
+            });
          });
-         loadFeed(1, done); // loads feed second time
        });
 
        //check for feed change at Reload
        it('Feed change at reload', function() {
-          newfeed = $('.header-title').html();  // saves new feed
           expect(feed).not.toEqual(newfeed);  // check for old and new feed to be different
        });
     });
