@@ -14,6 +14,4 @@
 
 * Download the Zip File to your machine and open `index.html` in the browser of your choice.
 
-* You can view live version of feed reader [here](http://sagarchoudhary96.github.io/Feed-Reader/).
-
 * If all test are up and running no error will be displayed.
